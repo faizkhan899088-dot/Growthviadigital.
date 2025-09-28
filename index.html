@@ -1,317 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        /* Reset default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio | Web Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Poppins',sans-serif;line-height:1.6;color:#333;scroll-behavior:smooth}
+    header{position:fixed;width:100%;background:#fff;padding:15px 50px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:1000}
+    .navbar{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:22px;font-weight:700;color:#111}.logo span{color:#0077ff}
+    .nav-links{display:flex;list-style:none}
+    .nav-links li{margin-left:20px}
+    .nav-links a{text-decoration:none;color:#333;font-weight:500;transition:.3s}
+    .nav-links a:hover{color:#0077ff}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
+    /* Hero */
+    .hero{height:100vh;background:linear-gradient(to right,#0077ff,#00c6ff);display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 20px}
+    .hero h1{font-size:40px;margin-bottom:10px}
+    .hero span{color:yellow}
+    .hero p{font-size:18px;margin-bottom:20px}
+    .btn{display:inline-block;background:#fff;color:#0077ff;padding:10px 25px;border-radius:25px;font-weight:600;transition:.3s;text-decoration:none}
+    .btn:hover{background:#0077ff;color:#fff}
 
-        /* Header Section */
-        header {
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-        }
+    section{padding:80px 20px}
+    .container{max-width:1100px;margin:auto;text-align:center}
+    h2{font-size:28px;margin-bottom:20px}
 
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
+    /* About */
+    .about p{max-width:700px;margin:auto;font-size:16px}
 
-        header p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
+    /* Projects */
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+    .project-card{position:relative;overflow:hidden;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+    .project-card img{width:100%;display:block;transition:.5s}
+    .project-card:hover img{transform:scale(1.1)}
+    .overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);color:#fff;display:flex;justify-content:center;align-items:center;opacity:0;transition:.5s}
+    .project-card:hover .overlay{opacity:1}
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: white;
-            color: #4facfe;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    /* Services */
+    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+    .service-card{padding:20px;background:#f9f9f9;border-radius:10px;transition:.3s}
+    .service-card:hover{background:#0077ff;color:#fff;transform:translateY(-5px)}
 
-        .btn:hover {
-            background-color: #4facfe;
-            color: white;
-        }
+    /* Contact */
+    .contact form{display:flex;flex-direction:column;gap:15px;max-width:500px;margin:auto}
+    .contact input,.contact textarea{padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px}
+    .contact button{cursor:pointer}
+    .form-status{margin-top:15px;font-weight:500;color:green}
 
-        /* Navigation */
-        nav {
-            background-color: #333;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Footer */
+    footer{text-align:center;padding:20px;background:#111;color:#fff}
 
-        nav ul {
-            list-style: none;
-            text-align: center;
-        }
+    /* Animation */
+    .fade-in{opacity:0;transform:translateY(20px);transition:all .8s ease-out}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
 
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #4facfe;
-        }
-
-        /* About Section */
-        #about {
-            padding: 60px 20px;
-            background-color: white;
-            text-align: center;
-        }
-
-        #about h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #4facfe;
-        }
-
-        #about p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-
-        #about img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Projects Section */
-        #projects {
-            padding: 60px 20px;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-
-        #projects h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: #4facfe;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project:hover {
-            transform: translateY(-10px);
-        }
-
-        .project img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .project h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .project p {
-            margin-bottom: 15px;
-        }
-
-        /* Contact Section */
-        #contact {
-            padding: 60px 20px;
-            background-color: white;
-            text-align: center;
-        }
-
-        #contact h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #4facfe;
-        }
-
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4facfe;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #00f2fe;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5em;
-            }
-
-            header p {
-                font-size: 1.2em;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-        }
-    </style>
+    @media(max-width:768px){.nav-links{display:none}}
+  </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Faiz<span>Designs</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <p>I'm a Web Designer & Developer creating attractive UI/UX experiences.</p>
-        <a href="#projects" class="btn">View My Work</a>
-    </header>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content fade-in">
+      <h1>Hello, I'm <span>Faiz Khan</span></h1>
+      <p>I design and build modern, responsive websites.</p>
+      <a href="#contact" class="btn">Hire Me</a>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <img src="https://via.placeholder.com/150" alt="Profile Picture">
-        <h2>About Me</h2>
-        <p>Hi, I'm [Your Name], a passionate web designer with a focus on creating user-friendly and visually appealing websites. I specialize in HTML, CSS, JavaScript, and modern UI/UX principles to deliver high-quality digital experiences.</p>
-        <p>With years of experience, I've worked on various projects ranging from personal portfolios to complex web applications.</p>
-    </section>
+  <!-- About -->
+  <section id="about" class="about fade-in">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I'm a passionate web designer with 5 successful projects completed for clients.
+         I specialize in creating modern, user-friendly websites that help businesses grow online.</p>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project">
-                <img src="https://via.placeholder.com/300x200" alt="Project 1">
-                <h3>Project One</h3>
-                <p>A responsive e-commerce website built with HTML, CSS, and JS.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/300x200" alt="Project 2">
-                <h3>Project Two</h3>
-                <p>An interactive portfolio site with smooth animations.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
-            <div class="project">
-                <img src="https://via.placeholder.com/300x200" alt="Project 3">
-                <h3>Project Three</h3>
-                <p>A blog platform focused on clean UI and fast performance.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
-        </div>
-    </section>
+  <!-- Projects -->
+  <section id="projects" class="projects fade-in">
+    <div class="container">
+      <h2>My Projects</h2>
+      <div class="project-grid">
+        <div class="project-card"><img src="https://via.placeholder.com/400x250" alt="Project 1"><div class="overlay"><h3>Project 1</h3></div></div>
+        <div class="project-card"><img src="https://via.placeholder.com/400x250" alt="Project 2"><div class="overlay"><h3>Project 2</h3></div></div>
+        <div class="project-card"><img src="https://via.placeholder.com/400x250" alt="Project 3"><div class="overlay"><h3>Project 3</h3></div></div>
+        <div class="project-card"><img src="https://via.placeholder.com/400x250" alt="Project 4"><div class="overlay"><h3>Project 4</h3></div></div>
+        <div class="project-card"><img src="https://via.placeholder.com/400x250" alt="Project 5"><div class="overlay"><h3>Project 5</h3></div></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <form id="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+  <!-- Services -->
+  <section id="services" class="services fade-in">
+    <div class="container">
+      <h2>Services</h2>
+      <div class="service-grid">
+        <div class="service-card"><h3>Website Design</h3><p>Modern, clean, and responsive websites tailored to your business.</p></div>
+        <div class="service-card"><h3>E-commerce Setup</h3><p>Complete online store setup with payment integration.</p></div>
+        <div class="service-card"><h3>Landing Pages</h3><p>High-converting landing pages for your campaigns.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 [Your Name]. All rights reserved.</p>
-    </footer>
+  <!-- Contact -->
+  <section id="contact" class="contact fade-in">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <p class="form-status"></p>
+    </div>
+  </section>
 
-    <script>
-        // Simple form submission handler (for demo purposes)
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Faiz Khan. All Rights Reserved.</p>
+  </footer>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+  <script>
+    // Fade-in Animation on Scroll
+    const faders=document.querySelectorAll('.fade-in');
+    const appearOptions={threshold:0.2};
+    const appearOnScroll=new IntersectionObserver((entries,observer)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },appearOptions);
+    faders.forEach(fader=>{appearOnScroll.observe(fader);});
 
+    // Contact Form Validation
+    const form=document.getElementById("contactForm");
+    const status=document.querySelector(".form-status");
+    form.addEventListener("submit",e=>{
+      e.preventDefault();
+      const name=document.getElementById("name").value.trim();
+      const email=document.getElementById("email").value.trim();
+      const message=document.getElementById("message").value.trim();
+      if(!name||!email||!message){
+        status.style.color="red";
+        status.textContent="Please fill all fields!";
+        return;
+      }
+      status.style.color="green";
+      status.textContent="Message sent successfully! (Demo Only)";
+      form.reset();
+    });
+  </script>
 </body>
 </html>
