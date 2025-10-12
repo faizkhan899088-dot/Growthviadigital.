@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://growthviadigital.pages.dev/download%20(19).jpg') no-repeat center/cover;
+            background: linear-gradient(135deg, #003366, #004d99);
             color: #fff;
         }
         header {
@@ -42,13 +42,25 @@
         .contact {
             font-size: 18px;
         }
-        .main-content {
+        .container {
+            display: flex;
+            justify-content: space-between;
             padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .main-content {
+            flex: 1;
             text-align: center;
+            padding: 30px;
+            margin-right: 20px;
+            max-width: 600px;
         }
         .main-content h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            color: #ffd700;
         }
         .main-content ul {
             list-style: none;
@@ -64,10 +76,7 @@
             margin-right: 10px;
         }
         .form-section {
-            position: absolute;
-            top: 150px;
-            right: 20px;
-            width: 300px;
+            flex: 0 0 300px;
             background: #fff;
             color: #000;
             padding: 20px;
@@ -101,6 +110,28 @@
         .form-section button:hover {
             background-color: #003366;
         }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-content {
+                margin-right: 0;
+                margin-bottom: 20px;
+                max-width: 90%;
+            }
+            .main-content h1 {
+                font-size: 36px;
+            }
+            .main-content ul li {
+                font-size: 16px;
+            }
+            .form-section {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -121,29 +152,31 @@
         </nav>
         <div class="contact">+91 8979 401 469</div>
     </header>
-    <div class="main-content">
-        <h1>YOUR SUCCESS LIES IN GOOD WEB DESIGNING SERVICES</h1>
-        <ul>
-            <li>It Sets The First Impression</li>
-            <li>It Builds Trust With Your Customers</li>
-            <li>Show Your Products & Services To Wide Audience</li>
-            <li>Helps In Growing Your Business Or Brand</li>
-            <li>Generate Revenue</li>
-        </ul>
-    </div>
-    <div class="form-section">
-        <h2>Get a FREE Consultation</h2>
-        <p>We Help Brands To Optimize Their Digital Marketing Performance</p>
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="E-mail" required>
-        <input type="tel" placeholder="Contact Number" required>
-        <select name="info-required" required>
-            <option value="" disabled selected>Information Required For *</option>
-            <option value="design">Web Design</option>
-            <option value="marketing">Digital Marketing</option>
-        </select>
-        <textarea placeholder="Message" rows="4"></textarea>
-        <button type="submit">SUBMIT</button>
+    <div class="container">
+        <div class="main-content">
+            <h1>YOUR SUCCESS LIES IN GOOD WEB DESIGNING SERVICES</h1>
+            <ul>
+                <li>It Sets The First Impression</li>
+                <li>It Builds Trust With Your Customers</li>
+                <li>Show Your Products & Services To Wide Audience</li>
+                <li>Helps In Growing Your Business Or Brand</li>
+                <li>Generate Revenue</li>
+            </ul>
+        </div>
+        <div class="form-section">
+            <h2>Get a FREE Consultation</h2>
+            <p>We Help Brands To Optimize Their Digital Marketing Performance</p>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Contact Number" required>
+            <select name="info-required" required>
+                <option value="" disabled selected>Information Required For *</option>
+                <option value="design">Web Design</option>
+                <option value="marketing">Digital Marketing</option>
+            </select>
+            <textarea placeholder="Message" rows="4"></textarea>
+            <button type="submit">SUBMIT</button>
+        </div>
     </div>
     <script>
         // Add smooth scrolling to navigation links
