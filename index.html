@@ -114,6 +114,54 @@
         .form-section button:hover {
             background-color: #003366;
         }
+        /* New Styles for Services Content */
+        .services-content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .services-content h1 {
+            font-size: 52px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .services-content h2 {
+            font-size: 28px;
+            color: #ffd700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            position: relative;
+            text-align: left;
+            padding-left: 30px;
+        }
+        .services-content h2:before {
+            content: "\2714"; /* Unicode checkmark */
+            color: #ffd700;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+        }
+        .services-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        .service-card {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .container {
@@ -139,6 +187,24 @@
             .form-section {
                 width: 90%;
                 max-width: 300px;
+            }
+            .services-content {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            .services-content h1 {
+                font-size: 36px;
+            }
+            .services-content h2 {
+                font-size: 22px;
+                padding-left: 20px;
+            }
+            .services-content h2:before {
+                font-size: 20px;
+            }
+            .services-content p {
+                font-size: 16px;
+                padding: 10px;
             }
         }
     </style>
@@ -187,7 +253,32 @@
             <button type="submit">SUBMIT</button>
         </div>
     </div>
-    <script=linebreak>    <script>
+    <!-- Enhanced Services Content -->
+    <div class="services-content">
+        <h1>BEST WEBSITE DESIGNING COMPANY IN DELHI</h1>
+        <p class="service-card">A successful website is built with key ingredients that lead to measurable rewards, whether that's increased leads, sales, or page views. As one of the top 10 web design companies in Delhi, we are committed to excellence. Every project we undertake goes through a thorough testing and optimization process, ensuring high performance and usability. As a result, many of the websites we've created are consistently ranking well on Google.</p>
+        <h2>Streamline Process</h2>
+        <p class="service-card">From design to execution and beyond, we remain committed to this principle. Our team takes pleasure in everything we produce.</p>
+        <h2>Talented Designers & Expert Developers</h2>
+        <p class="service-card">With years of experience, they specialize in developing pixel-perfect, clean, and SEO-optimized websites that are visually appealing.</p>
+        <h2>Extensive Experience</h2>
+        <p class="service-card">In web design, we have developed one of the most comprehensive and intricate strategies to date.</p>
+        <h2>Professional Web Design Services in Delhi</h2>
+        <p class="service-card">As one of the leading website designers in Delhi, we have earned the trust of many satisfied clients from all corners thanks to our specialized services.</p>
+        <h2>Shopify Store Creation</h2>
+        <p class="service-card">We create professional, user-friendly Shopify stores optimized for sales, branding, and customer experience.</p>
+        <h2>Landing Page Design</h2>
+        <p class="service-card">We design eye-catching landing pages to attract visitors and turn them into customers with clear, engaging content.</p>
+        <h2>Laravel Website Development</h2>
+        <p class="service-card">We build custom, scalable, and secure Laravel web applications tailored to your business requirements and goals.</p>
+        <h2>Website Maintenance</h2>
+        <p class="service-card">We provide regular updates, backups, and fixes to ensure your website runs smoothly and securely.</p>
+        <h2>Ecommerce Web Designing</h2>
+        <p class="service-card">We design easy-to-use online stores that help you sell products effectively and grow your business.</p>
+        <h2>Hosting Services</h2>
+        <p class="service-card">We offer reliable website hosting to keep your site fast, secure, and always online.</p>
+    </div>
+    <script>
         // Add smooth scrolling to navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
